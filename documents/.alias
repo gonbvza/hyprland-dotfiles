@@ -1,0 +1,45 @@
+
+# Custom PS1 with venv support
+# PS1='\[\033[1;32m\]\u \[\033[0;34m\] \w\[\033[0;31m\]$(__git_ps1 " (%s)")\[\033[0m\] \$ '
+
+## Temporal ##
+export GIT_PS1_SHOWDIRTYSTATE=1        # show * for modified files
+export GIT_PS1_SHOWSTAGEDSTATE=1       # show + for staged files
+export GIT_PS1_SHOWUNTRACKEDFILES=1    # show ? for untracked files
+export GIT_PS1_SHOWSTASHSTATE=1        # show % for stashes
+export GIT_PS1_SHOWUPSTREAM="auto"
+
+
+# Function to color git branch depending on dirty state
+git_branch_color() {
+    # Get git branch with __git_ps1 markers
+    local branch=$(__git_ps1 "%s")
+    
+    if [[ $branch == "" ]]; then
+        echo -e "\033[0;31m""\033[0m"
+    # Check for dirty markers (*, +, ?, %)
+    elif [[ $branch == *['*?%']* ]]; then
+        # Dirty branch → red
+        echo -e "\033[0;31m ($branch)\033[0m"
+    elif [[ $branch == *['+']* ]]; then
+        # Dirty branch → red
+        echo -e "\033[0;33m ($branch)\033[0m"
+    else
+        # Clean branch → green
+        echo -e "\033[0;32m ($branch)\033[0m"
+    fi
+}
+
+# Virtual env prompt
+VENV_PROMPT='$( [ -n "$VIRTUAL_ENV" ] && echo "($(basename $VIRTUAL_ENV)) ")'
+
+# Final PS1
+PS1="${VENV_PROMPT}\[\033[1;32m\]\u \[\033[0;34m\] \w\$(git_branch_color) \$ "
+. "$HOME/.cargo/env"
+
+
+alias ls='ls --color=auto'
+
+eval "$(dircolors ~/.dircolors)"
+
+set enable-bracketed-paste on

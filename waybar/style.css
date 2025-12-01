@@ -1,0 +1,237 @@
+/* --- Global Styles --- */
+* {
+  font-family: 'Cascadia Mono Nerd Font', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;
+  font-size: 11px;
+  min-height: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+
+/* --- Waybar Container --- */
+#waybar {
+  background: transparent;
+  color: #c6d0f5;
+  margin: 0px;
+  font-weight: 500;
+  padding: 0px;
+}
+
+/* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
+#workspaces,
+#custom-uptime,
+#cpu {
+  background-color: #18181c;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
+  border-radius: 6px; /* These modules are always rounded */
+  min-width: 0;
+  border: none;
+  /* Transition for background-color and color only */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#custom-uptime {
+  margin-right: 5px; /* Spacing after the uptime module */
+}
+
+/* Simple Hover effects for individual left modules - BRIGHTER COLOR */
+#custom-uptime:hover,
+#cpu:hover {
+  background-color: rgb(41, 42, 53); /* Brighter highlight */
+}
+
+/* --- Workspaces Module (Black & White Minimalist Design) --- */
+#workspaces {
+  background-color: #000000;
+  padding: 2px;
+  margin-left: 7px;
+  margin-right: 5px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#workspaces button {
+  color: #666666;
+  border-radius: 5px;
+  padding: 0rem 0.4rem;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  font-weight: 400;
+}
+
+#workspaces button.active {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+#workspaces button:hover {
+  background: #1a1a1a;
+  color: #FFFFFF;
+}
+
+/* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
+#clock {
+  background-color: #18181c;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 6px; /* This module is always rounded */
+  box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2);
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Simple Hover effect for clock module - BRIGHTER COLOR */
+#clock:hover {
+  background-color: rgba(153, 209, 219, 0.1); /* Brighter highlight */
+}
+
+/* --- Right Modules (Single, Seamless Bar ) --- */
+/* Remove the margin-right: 100px from the general right modules rule */
+#bluetooth,
+#pulseaudio,
+#custom-lock {
+  background-color: #18181c;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px; 
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Keep bluetooth as the left edge of the right bar */
+#bluetooth {
+  margin-left: 0px; 
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/* Make pulseaudio the right edge with proper margin */
+#pulseaudio {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 15px; /* Same as workspaces margin-left */
+}
+
+
+#custom-uptime {
+  color: #babbf1;
+}
+#cpu {
+  color: #c6d0f5;
+}
+
+#clock {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+#pulseaudio {
+  color: #FFFFFF;
+}
+#backlight {
+  color: #c6d0f5;
+}
+
+#network {
+  color: #c6d0f5;
+}
+
+#network.disconnected {
+  color: #e78284;
+}
+
+#custom-lock {
+  color: #babbf1;
+}
+
+/* Bluetooth colors - white when on, grey when off */
+#bluetooth {
+  color: #666666; /* Grey when off */
+  font-size: 16px;
+}
+
+#bluetooth.on {
+  color: #FFFFFF; /* White when on */
+}
+
+#bluetooth.connected {
+  color: #FFFFFF; /* White when connected */
+}
+
+
+/* --- Tooltip Styles --- */
+tooltip {
+  background-color: #18181c;
+  color: #dddddd;
+  padding: 5px 12px;
+  margin: 5px 0px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+}
+
+
+/* Reduce all module margins for thinner appearance */
+#custom-spotify,
+#workspaces,
+#custom-uptime,
+#cpu,
+#clock,
+#custom-pomodoro,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#network,
+#custom-lock {
+  margin: 4px 0px 0px 0px; /* Reduced from 5px */
+}
+
+/* Keep horizontal margins for workspaces and battery */
+#workspaces {
+  margin: 4px 5px 0px 7px;
+}
+
+
+/* Reduce padding for thinner modules */
+#custom-spotify,
+#custom-uptime,
+#cpu,
+#clock,
+#custom-pomodoro,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#network,
+#custom-lock,
+#battery {
+  padding: 0rem 0.7rem; /* Reduced from 0.3rem */
+}
+
+#pulseaudio {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 15px; /* Same as workspaces margin-left */
+}
+
+#workspaces {
+  margin-left: 15px; /* Same as workspaces margin-left */
+}
+
+#custom-spotify {
+    padding: 0 10px;
+    margin: 0 4px;
+    color: black;
+
+}
+
+#custom-spotify {
+  margin-top:  5px;
+}
+
